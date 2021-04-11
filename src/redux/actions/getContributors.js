@@ -1,23 +1,6 @@
 import { GIT_CONTRIBUTORS } from './types';
 import { options } from './options';
 
-export const getContributors = () => async (dispatch) => {
-   try {
-      const res = await fetch(
-         `https://api.github.com/orgs/Angular/repos?per_page=1&page=2`,
-         options
-      );
-      const data = await res.json();
-      const getAllContributorsData = await getAllrepos(data);
-      dispatch({
-         type: GIT_CONTRIBUTORS,
-         payload: getAllContributorsData,
-      });
-   } catch (err) {
-      console.log(err);
-   }
-};
-
 const getAllrepos = async (data) => {
    let contributorsArray = [];
    for (const element of data) {
@@ -52,6 +35,23 @@ const getContributorDetails = async (url) => {
       const res = await fetch(url, options);
       const data = await res.json();
       return data;
+   } catch (err) {
+      console.log(err);
+   }
+};
+
+export const getContributors = () => async (dispatch) => {
+   try {
+      const res = await fetch(
+         `https://api.github.com/orgs/Angular/repos?per_page=1&page=2`,
+         options
+      );
+      const data = await res.json();
+      const getAllContributorsData = await getAllrepos(data);
+      dispatch({
+         type: GIT_CONTRIBUTORS,
+         payload: getAllContributorsData,
+      });
    } catch (err) {
       console.log(err);
    }

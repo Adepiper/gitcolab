@@ -1,4 +1,7 @@
 import {
+   FILTER_BY_FOLLOWERS,
+   FILTER_BY_GISTS,
+   FILTER_BY_REPOS,
    GET_CONTRIBUTOR_REPO,
    GET_REPO_DETAILS,
    GIT_CONTRIBUTOR,
@@ -43,6 +46,24 @@ const contributorsReducers = (state = initialState, action) => {
          return {
             ...state,
             repoDetails: action.payload,
+            loading: false,
+         };
+      case FILTER_BY_FOLLOWERS:
+         return {
+            ...state,
+            contributors: action.payload,
+            loading: false,
+         };
+      case FILTER_BY_GISTS:
+         return {
+            ...state,
+            contributors: action.payload,
+            loading: false,
+         };
+      case FILTER_BY_REPOS:
+         return {
+            ...state,
+            contributors: action.payload,
             loading: false,
          };
       default:

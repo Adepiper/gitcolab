@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getContributors } from '../redux/actions';
+import { getContributors } from '../redux/actions/getContributors';
 import PropTypes from 'prop-types';
 import ContributorsList from './ContributorsList';
 import { loadingAction } from '../redux/actions/loading';
@@ -10,24 +10,18 @@ import Loading from './utilities/Loading';
 const Contributors = (props) => {
    const { getContributors, contributors, loading, loadingAction } = props;
    useEffect(() => {
-      loadingAction();
-      getContributors();
+      if (contributors.length === 0) {
+         loadingAction();
+         getContributors();
+      }
    }, []);
 
    const contributorsEL = () => (
-      <div class='container-fluid search'>
+      <div className='container-fluid search'>
          <div className='container search'>
-            <form class='form-inline mx-auto'>
-               <input
-                  class='form-control mx-auto'
-                  type='search'
-                  placeholder='Search'
-                  aria-label='Search'
-               />
-            </form>
-            <div class='dropdown text-center'>
+            <div className='dropdown text-right mt-3'>
                <a
-                  class='dropdown-toggle'
+                  className='dropdown-toggle mt-3'
                   href='#'
                   id='Dropdown'
                   role='button'
@@ -35,14 +29,17 @@ const Contributors = (props) => {
                   aria-haspopup='true'
                   aria-expanded='false'
                >
-                  Filters
+                  Sort by
                </a>
-               <div class='dropdown-menu' aria-labelledby='Dropdown'>
-                  <a class='dropdown-item' href='#'>
-                     Ascending
+               <div className='dropdown-menu' aria-labelledby='Dropdown'>
+                  <a className='dropdown-item' href='#'>
+                     Followers
                   </a>
-                  <a class='dropdown-item' href='#'>
-                     Descending
+                  <a className='dropdown-item' href='#'>
+                     Gists
+                  </a>
+                  <a className='dropdown-item' href='#'>
+                     Public Repos
                   </a>
                </div>
             </div>
@@ -53,29 +50,29 @@ const Contributors = (props) => {
                   <div>No results</div>
                )}
                <nav aria-label='Page navigation' class='navigation'>
-                  <ul class='pagination'>
-                     <li class='page-item'>
-                        <a class='page-link' href='#'>
+                  <ul className='pagination'>
+                     <li className='page-item'>
+                        <a className='page-link' href='#'>
                            1
                         </a>
                      </li>
-                     <li class='page-item'>
-                        <a class='page-link' href='#'>
+                     <li className='page-item'>
+                        <a className='page-link' href='#'>
                            2
                         </a>
                      </li>
-                     <li class='page-item'>
-                        <a class='page-link' href='#'>
+                     <li className='page-item'>
+                        <a className='page-link' href='#'>
                            3
                         </a>
                      </li>
-                     <li class='page-item'>
-                        <a class='page-link' href='#'>
+                     <li className='page-item'>
+                        <a className='page-link' href='#'>
                            4
                         </a>
                      </li>
-                     <li class='page-item'>
-                        <a class='page-link' href='#'>
+                     <li className='page-item'>
+                        <a className='page-link' href='#'>
                            5
                         </a>
                      </li>
