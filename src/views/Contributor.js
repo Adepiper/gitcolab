@@ -2,16 +2,70 @@ import React from 'react';
 import { useEffect } from 'react';
 import { connect, useSelector } from 'react-redux';
 import { getContributor } from '../redux/actions/getContributor';
+import { loadingAction } from '../redux/actions/loading';
+import RepositoriesList from './RepositoriesList';
+import Loading from './utilities/Loading';
 
 const Contributor = (props) => {
-   const { getContributor } = props;
-   const allRepos = useSelector((state) => state.contributors.contributors);
+   const { getContributor, match, contributors, contributor, loading } = props;
+   const { name } = match.params;
+   // console.log(name);
+
    useEffect(() => {
-      if (allRepos.length > 1) {
-         getContributor(allRepos, 'abrons');
+      if (contributors.length > 1) {
+         loadingAction();
+         getContributor(contributors, name);
       }
    }, []);
-   return <div>contributor</div>;
+   const contributorEL = () => (
+      <>
+         <div class='container-fluid bg-black-angular'>
+            <div class='image'>
+               <img src={contributor.avatar_url} alt='' />
+            </div>
+            <div class='angular'>
+               <img src='/assets/Angular-1.png' alt='' />
+            </div>
+         </div>
+         <div class='container-fluid'>
+            <div class='content'>
+               <div class='info'>
+                  <p class='name'>{contributor.name}</p>
+                  <span class='handle'>{contributor.login}</span>
+                  <div class='social'>
+                     {contributor.twitter_name && (
+                        <span class='icon'>
+                           <a href={``}>
+                              <i class='fab fa-twitter'></i>
+                           </a>
+                        </span>
+                     )}
+                  </div>
+
+                  <p class='location'>
+                     <span>
+                        <i class='fas fa-map-marker-alt'></i>
+                     </span>{' '}
+                     {contributor.location}
+                  </p>
+               </div>
+               <div class='recents'>
+                  <div class='heading'>
+                     <h2>Repositories</h2>
+                  </div>
+                  <RepositoriesList repos={contributor.repos} />
+               </div>
+            </div>
+         </div>
+      </>
+   );
+   return <>{loading ? <Loading /> : contributorEL()}</>;
 };
 
-export default connect(null, { getContributor })(Contributor);
+const mapStateToProps = (state) => ({
+   contributors: state.contributors.contributors,
+   contributor: state.contributors.contributor,
+   loading: state.contributors.loading,
+});
+
+export default connect(mapStateToProps, { getContributor })(Contributor);

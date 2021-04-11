@@ -22,14 +22,14 @@ const Contributors = (props) => {
       sortingAction,
    } = props;
    useEffect(() => {
-      loadingAction();
-      getContributors();
+      if (contributors.length === 0) {
+         loadingAction();
+         getContributors();
+      }
    }, []);
    const sortBy = (params) => {
       loadingAction();
-
       sortingAction(params, contributors);
-      console.log(contributors);
    };
 
    const contributorsEL = () => (

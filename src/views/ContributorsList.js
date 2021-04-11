@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 const ContributorsList = (props) => {
-   const { contributors, loading } = props;
-   console.log(contributors);
-   console.log(props);
+   const { contributors } = props;
    const contributorInfo = (contributor) => (
       <div className='box' key={contributor.id}>
          <div className='image'>
