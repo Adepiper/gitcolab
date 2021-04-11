@@ -12,7 +12,11 @@ function App() {
          <Switch>
             <Route exact path='/' component={Contributors} />
             <Route exact path='/contributor/:name' component={Contributor} />
-            <Route exact path='/repository/:repo' component={SingleRepo} />
+            <Route
+               exact
+               path='/contributor/:name/:repo'
+               component={SingleRepo}
+            />
          </Switch>
       </Router>
    );

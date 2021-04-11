@@ -1,27 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const RepositoriesList = () => {
-   return (
-      <>
-         <div class='project'>
-            <div class='project-info'>
-               <h3>Project title 1</h3>
-               <span>Apr 2021</span>
-               <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Nobis voluptate recusandae, dolores repellendus consectetur
-                  vitae. Nihil incidunt sed repellat illo in fuga iusto
-                  quisquam, quis, nobis repudiandae minus nulla eum.
-               </p>
-            </div>
-            <div class='view'>
-               <a href='#' class='button'>
-                  View Project
-               </a>
-            </div>
+const RepositoriesList = (props) => {
+   const { repos, name } = props;
+   const checkRepoLength = () => {
+      if (repos.length > 0) {
+         return mapThroughRepos;
+      } else {
+         return <div>No repository</div>;
+      }
+   };
+
+   const mapThroughRepos = repos.map((repo) => (
+      <div className='project' key={repo.id}>
+         <div className='project-info'>
+            <h3>{repo.name}</h3>
          </div>
-      </>
-   );
+         <div className='view'>
+            <Link to={`/contributor/${name}/${repo.name}`} className='button'>
+               View Repository
+            </Link>
+         </div>
+      </div>
+   ));
+
+   return <>{checkRepoLength()}</>;
 };
 
 export default RepositoriesList;

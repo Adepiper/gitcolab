@@ -53,7 +53,10 @@ const Contributor = (props) => {
                   <div class='heading'>
                      <h2>Repositories</h2>
                   </div>
-                  <RepositoriesList repos={contributor.repos} />
+                  <RepositoriesList
+                     repos={contributor.repos}
+                     name={contributor.login}
+                  />
                </div>
             </div>
          </div>
