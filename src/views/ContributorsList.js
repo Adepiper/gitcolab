@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 const ContributorsList = (props) => {
+   const { contributors, loading } = props;
+   console.log(contributors);
    console.log(props);
-   const { contributors } = props;
    const contributorInfo = (contributor) => (
-      <div className='box'>
+      <div className='box' key={contributor.id}>
          <div className='image'>
             <img
                src={contributor.avatar_url}
@@ -30,10 +32,23 @@ const ContributorsList = (props) => {
          </Link>
       </div>
    );
-   const mapContributors = contributors.map((contributor) => {
-      return contributorInfo(contributor);
-   });
-   return <>{mapContributors}</>;
+   const mapContributors = () => {
+      if (contributors.length > 0) {
+         return contributors.map((contributor) => {
+            return contributorInfo(contributor);
+         });
+      } else {
+         return <div>No results</div>;
+      }
+   };
+   return <>{mapContributors()}</>;
 };
 
+ContributorsList.propTypes = {
+   contributors: PropTypes.array.isRequired,
+};
+const mapStateToProps = (state) => ({
+   contributors: state.contributors.contributors,
+   loading: state.contributors.loading,
+});
 export default ContributorsList;
