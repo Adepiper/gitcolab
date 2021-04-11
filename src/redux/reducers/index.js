@@ -5,7 +5,6 @@ import sortReducer from './sortReducer';
 
 const allReducers = combineReducers({
    contributors: contributorsReducers,
-   loading: loadingReducer,
    sortArray: sortReducer,
 });
 
