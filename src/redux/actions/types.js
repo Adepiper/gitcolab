@@ -5,3 +5,4 @@ export const FILTER_BY_GISTS = 'GISTS';
 export const FILTER_BY_FOLLOWERS = 'FOLLOWERS';
 export const GET_CONTRIBUTOR_REPO = 'CONTRIBUTOR_REPO';
 export const GET_REPO_DETAILS = 'GET_REPO_DETAILS';
+export const LOADING = 'LOADING';
