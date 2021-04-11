@@ -7,7 +7,7 @@ import {
 
 const initialState = {
    contributors: [],
-   contributor: [],
+   contributor: {},
    contributorRepo: [],
    repoDetails: {},
 };

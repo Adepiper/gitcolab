@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getContributors } from '../redux/actions';
 
-const Contributors = () => {
+const Contributors = (props) => {
+   const { getContributors } = props;
+   // useEffect(() => {
+   //    getContributors();
+   // }, []);
    return (
       <>
          <div class='container-fluid search'>
-            <div class='container search'>
+            <Link to='/contributor'>contributor</Link>
+
+            <div className='container search'>
                <form class='form-inline mx-auto'>
                   <input
                      class='form-control mx-auto'
@@ -251,4 +260,4 @@ const Contributors = () => {
    );
 };
 
-export default Contributors;
+export default connect(null, { getContributors })(Contributors);

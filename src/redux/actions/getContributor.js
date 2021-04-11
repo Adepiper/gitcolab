@@ -1,14 +1,18 @@
 import { GIT_CONTRIBUTOR } from './types';
 import { options } from './options';
 
-export const getContributor = (url) => async (dispatch) => {
+export const getContributor = (data, id) => async (dispatch) => {
+   const filterObject = data.filter((item) => {
+      return item.login === id;
+   })[0];
+   let contributor = { ...filterObject };
    try {
-      const res = await fetch(url, options);
-      const data = await res.json();
-
+      const res = await fetch(contributor.repos_url);
+      const responseData = await res.json();
+      contributor = { ...contributor, repos: responseData };
       dispatch({
          type: GIT_CONTRIBUTOR,
-         payload: data,
+         payload: contributor,
       });
    } catch (err) {
       console.log(err);

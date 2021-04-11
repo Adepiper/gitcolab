@@ -6,7 +6,7 @@ const Header = () => {
       <>
          <nav class='navbar navbar-expand-lg navbar-light bg-light sticky-top'>
             <div className='container-fluid'>
-               <Link class='navbar-brand' href='/'>
+               <Link class='navbar-brand' to='/'>
                   Angular
                </Link>
                <button
