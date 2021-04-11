@@ -7,7 +7,7 @@ export const getContributor = (data, id) => async (dispatch) => {
    })[0];
    let contributor = { ...filterObject };
    try {
-      const res = await fetch(contributor.repos_url);
+      const res = await fetch(contributor.repos_url, options);
       const responseData = await res.json();
       contributor = { ...contributor, repos: responseData };
       dispatch({

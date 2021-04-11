@@ -7,20 +7,16 @@ import {
 
 export const sortingAction = (sortParams, data) => (dispatch) => {
    let sortedData = [];
-   console.log(sortParams);
    switch (sortParams) {
       case FILTER_BY_REPOS:
-         console.log('repos');
          sortedData = sortByRepos(data);
          break;
 
       case FILTER_BY_FOLLOWERS:
-         console.log('followers');
          sortedData = sortByFollowers(data);
          break;
 
       case FILTER_BY_GISTS:
-         console.log('gists');
          sortedData = sortByGists(data);
          break;
 
