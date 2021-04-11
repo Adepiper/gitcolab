@@ -6,6 +6,9 @@ import { getContributor } from './redux/actions/getContributor';
 import { useEffect } from 'react';
 import { getContributorRepo } from './redux/actions/getContributorRepo';
 import { getRepoDetails } from './redux/actions/getRepoDetails';
+import { Route, Router, Switch } from 'react-router-dom';
+import Contributors from './views/Contributors';
+import SingleRepo from './views/SingleRepo';
 
 function App(props) {
    const getContributorEl = () => {
@@ -13,11 +16,13 @@ function App(props) {
    };
 
    return (
-      <div className='App'>
-         Hello
-         <button onClick={props.getContributors}>get Contributors</button>
-         {/* <button onClick={getContributorEl}>get Contributors</button> */}
-      </div>
+      <Router>
+         <Switch>
+            <Route exact path='/' component={Contributors} />
+            <Route exact path='/contributor' component={Contributor} />
+            <Route exact path='/repository' component={SingleRepo} />
+         </Switch>
+      </Router>
    );
 }
 
