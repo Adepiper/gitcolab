@@ -5,10 +5,13 @@ export const getContributor = (data, id) => async (dispatch) => {
    const filterObject = data.filter((item) => {
       return item.login === id;
    })[0];
+   console.log(filterObject);
    let contributor = { ...filterObject };
    try {
-      const res = await fetch(contributor.repos_url, options);
+      const res = await fetch(contributor.repos_url);
+
       const responseData = await res.json();
+      console.log(responseData);
       contributor = { ...contributor, repos: responseData };
       dispatch({
          type: GIT_CONTRIBUTOR,

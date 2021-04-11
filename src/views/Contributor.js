@@ -12,10 +12,8 @@ const Contributor = (props) => {
    // console.log(name);
 
    useEffect(() => {
-      if (contributors.length > 1) {
-         loadingAction();
-         getContributor(contributors, name);
-      }
+      loadingAction();
+      getContributor(contributors, name);
    }, []);
    const contributorEL = () => (
       <>
@@ -53,10 +51,12 @@ const Contributor = (props) => {
                   <div class='heading'>
                      <h2>Repositories</h2>
                   </div>
-                  <RepositoriesList
-                     repos={contributor.repos}
-                     name={contributor.login}
-                  />
+                  {contributor.repos && (
+                     <RepositoriesList
+                        repos={contributor.repos}
+                        name={contributor.login}
+                     />
+                  )}
                </div>
             </div>
          </div>
