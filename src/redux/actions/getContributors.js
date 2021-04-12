@@ -15,7 +15,7 @@ const getAllrepos = async (data) => {
    return concatenateArray(contributorsArray);
 };
 
-const concatenateArray = async (data) => {
+export const concatenateArray = async (data) => {
    let object = {};
    let finalData = [];
    data.forEach((item) => {
@@ -30,7 +30,7 @@ const concatenateArray = async (data) => {
    return finalData;
 };
 
-const getContributorDetails = async (url) => {
+export const getContributorDetails = async (url) => {
    try {
       const res = await fetch(url, options);
       const data = await res.json();

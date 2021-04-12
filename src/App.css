@@ -571,3 +571,295 @@ a {
       font-size: 15px;
    }
 }
+
+.container-fluid.angular-outline {
+   height: 30vh;
+   width: 100%;
+   background: #2e3192;
+}
+.container-fluid.container-fluid.angular-outline .bg-darkblue {
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   position: relative;
+}
+.container-fluid.container-fluid.angular-outline .bg-darkblue img {
+   position: absolute;
+   bottom: 0;
+   z-index: 99;
+}
+.container-fluid.container-fluid.angular-outline .bg-darkblue .empty.blue-bg {
+   height: 5vh;
+   background: #29abe2;
+   width: 100%;
+   position: absolute;
+   bottom: 0;
+}
+.container-fluid.alvo {
+   margin-top: 5vh;
+   padding: 5vh 5vw;
+   height: 40vh;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+.container-fluid.alvo .alvo-info {
+   width: 60%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+}
+.container-fluid.alvo .repo-name {
+   margin-top: 3vh;
+   margin-bottom: 0;
+   font-size: 45px;
+   font-style: normal;
+   font-weight: 500;
+   line-height: 67px;
+   letter-spacing: 0em;
+   text-align: left;
+}
+.container-fluid.alvo .date {
+   color: #0071bc;
+   margin-bottom: 2vh;
+}
+.container-fluid.alvo .buttons {
+   width: 30%;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: flex-end;
+}
+
+.container-fluid.alvo .buttons a {
+   background: #0071bc;
+   color: #fff;
+   text-align: center;
+   border-radius: 10px;
+   padding: 5px 10px;
+   height: 20%;
+   width: 40%;
+}
+.container-fluid.alvo .buttons .dark {
+   background: #4d4d4d;
+}
+.container-fluid.contributors {
+   height: 65vh;
+}
+hr {
+   border-top: 1px solid #4d4d4d;
+}
+.contributors .header,
+.getting-started .header {
+   width: 100%;
+   padding: 0 5vw;
+   font-size: 27px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: 40px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #4d4d4d;
+}
+.contributors .content {
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row;
+   justify-content: space-evenly;
+   align-items: center;
+   margin: 10vh auto;
+   padding: 0 3vw;
+}
+.content .box {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+   width: 20%;
+   margin: 5vh auto;
+   height: 300px;
+   background-color: #29abe2;
+   border-radius: 17px;
+}
+.content .box div.image {
+   position: absolute;
+   border: 5px solid #e6e6e6;
+   top: -5%;
+   width: 150px;
+   height: 150px;
+   border-radius: 50%;
+   background-color: #666666;
+}
+.content .box .name {
+   position: absolute;
+   top: 50%;
+   font-size: 25px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: 38px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #fff;
+}
+.content .box .social {
+   position: absolute;
+   top: 65%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+   align-items: center;
+   width: 80%;
+}
+.social span.black {
+   color: black;
+}
+.social span.white {
+   color: #fff;
+}
+.content .box a {
+   position: absolute;
+   bottom: 10%;
+   width: 50%;
+   background: #333333;
+   color: #fff;
+   text-align: center;
+   border-radius: 10px;
+   padding: 5px;
+}
+.container-fluid.getting-started {
+   height: 70vh;
+   margin: 5vh 0;
+   margin-top: 10vh;
+}
+.container-fluid.getting-started .content {
+   padding: 0 5vw;
+   margin: 5vh 0;
+}
+.container-fluid.getting-started .content h4 {
+   font-size: 22px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: 33px;
+   letter-spacing: 0em;
+   text-align: left;
+}
+.container-fluid.getting-started .content p {
+   width: 70%;
+}
+.container-fluid.getting-started .content .see-more {
+   background: #0071bc;
+   color: #fff;
+   border-radius: 20px;
+   padding: 10px;
+   width: 10%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-left: 60%;
+   margin-top: 3vh;
+   cursor: pointer;
+}
+.see-more a {
+   color: #fff;
+   text-align: center;
+}
+@media only screen and (max-width: 1025px) {
+   .container-fluid.alvo {
+      height: 55vh;
+   }
+   .container-fluid.contributors {
+      height: 75vh;
+   }
+   .container-fluid.getting-started .content .see-more {
+      width: 15%;
+      margin-left: 55%;
+   }
+}
+
+@media only screen and (max-width: 770px) {
+   .navbar-nav {
+      background-color: #bcc3c7;
+      width: 100%;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+   }
+   .collapse .form-inline {
+      visibility: hidden;
+   }
+
+   .navbar ul li a {
+      color: #0071bc !important;
+   }
+   .container-fluid.container-fluid.angular-outline .bg-darkblue img {
+      width: 100%;
+   }
+   .container-fluid.alvo {
+      margin-top: 10vh;
+      height: 55vh;
+   }
+   .container-fluid.alvo .buttons {
+      width: 35%;
+   }
+   .container-fluid.alvo .buttons a {
+      height: unset;
+      width: 40%;
+      font-size: 14px;
+   }
+   .container-fluid.contributors {
+      height: 140vh;
+   }
+   .content .box {
+      width: 40%;
+   }
+   .container-fluid.getting-started {
+      height: 80vh;
+   }
+   .container-fluid.getting-started .content p {
+      width: 90%;
+   }
+   .container-fluid.getting-started .content .see-more {
+      margin-left: 80%;
+      width: 20%;
+      margin-top: unset;
+      margin-top: 3vh;
+   }
+}
+
+@media only screen and (max-width: 430px) {
+   .container-fluid.alvo {
+      margin-top: 2vh;
+      height: 80vh;
+      flex-direction: column;
+      justify-content: center;
+   }
+   .container-fluid.alvo .alvo-info {
+      width: 100%;
+   }
+   .container-fluid.alvo .buttons {
+      width: 70%;
+      height: 10%;
+      align-items: center;
+   }
+   .container-fluid.contributors {
+      height: 1550px;
+   }
+   .contributors .content {
+      flex-direction: column;
+      flex-wrap: unset;
+   }
+   .content .box {
+      width: 80%;
+   }
+   .container-fluid.getting-started .content p {
+      width: 100%;
+   }
+   .container-fluid.getting-started .content .see-more {
+      width: 25%;
+      margin-left: 70%;
+   }
+}

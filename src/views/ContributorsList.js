@@ -45,8 +45,4 @@ const ContributorsList = (props) => {
 ContributorsList.propTypes = {
    contributors: PropTypes.array.isRequired,
 };
-const mapStateToProps = (state) => ({
-   contributors: state.contributors.contributors,
-   loading: state.contributors.loading,
-});
 export default ContributorsList;

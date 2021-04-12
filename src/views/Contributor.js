@@ -7,9 +7,15 @@ import RepositoriesList from './RepositoriesList';
 import Loading from './utilities/Loading';
 
 const Contributor = (props) => {
-   const { getContributor, match, contributors, contributor, loading } = props;
+   const {
+      getContributor,
+      match,
+      contributors,
+      contributor,
+      loading,
+      loadingAction,
+   } = props;
    const { name } = match.params;
-   // console.log(name);
 
    useEffect(() => {
       loadingAction();
@@ -71,4 +77,6 @@ const mapStateToProps = (state) => ({
    loading: state.contributors.loading,
 });
 
-export default connect(mapStateToProps, { getContributor })(Contributor);
+export default connect(mapStateToProps, { getContributor, loadingAction })(
+   Contributor
+);
