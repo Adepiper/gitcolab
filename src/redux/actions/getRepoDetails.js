@@ -1,7 +1,7 @@
 import { GET_REPO_DETAILS } from './types';
 import { options } from './options';
 import { contributorNotInArray } from './getContributor';
-import { concatenateArray, getContributorDetails } from './getContributors';
+import { concatenateArray } from './getContributors';
 
 export const getRepoDetails = (data, name, id) => async (dispatch) => {
    let repoDetails = {};
@@ -31,17 +31,15 @@ export const getRepoDetails = (data, name, id) => async (dispatch) => {
 
 const getRepoFromUser = async (id, name) => {
    const userDetails = await contributorNotInArray(id);
-   console.log(id, name);
    try {
       const res = await fetch(userDetails.repos_url);
       const responseData = await res.json();
       const filteredArray = responseData.filter(
          (item) => item.name === name
       )[0];
-      console.log(filteredArray);
+
       return filteredArray;
    } catch (err) {
       console.log(err);
    }
-   return userDetails;
 };

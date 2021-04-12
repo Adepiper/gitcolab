@@ -33,36 +33,43 @@ const Contributor = (props) => {
          </div>
          <div class='container-fluid'>
             <div class='content'>
-               <div class='info'>
-                  <p class='name'>{contributor.name}</p>
-                  <span class='handle'>{contributor.login}</span>
-                  <div class='social'>
-                     {contributor.twitter_name && (
-                        <span class='icon'>
-                           <a href={``}>
-                              <i class='fab fa-twitter'></i>
-                           </a>
-                        </span>
-                     )}
+               <div className='row'>
+                  <div className='col-lg-3 col-md-5'>
+                     <div class='info'>
+                        <p class='name'>{contributor.name}</p>
+                        <span class='handle'>{contributor.login}</span>
+                        <div class='social'>
+                           {contributor.twitter_name && (
+                              <span class='icon'>
+                                 <a href={``}>
+                                    <i class='fab fa-twitter'></i>
+                                 </a>
+                              </span>
+                           )}
+                        </div>
+                        <p class='location'>
+                           <span>
+                              <i class='fas fa-map-marker-alt'></i>
+                           </span>{' '}
+                           {contributor.location}
+                        </p>
+                     </div>
                   </div>
-
-                  <p class='location'>
-                     <span>
-                        <i class='fas fa-map-marker-alt'></i>
-                     </span>{' '}
-                     {contributor.location}
-                  </p>
-               </div>
-               <div class='recents'>
-                  <div class='heading'>
-                     <h2>Repositories</h2>
+                  <div className='col-lg-9 col-md-7'>
+                     <div class='recents'>
+                        <div class='heading'>
+                           <h2>Repositories</h2>
+                        </div>
+                        <div className='row'>
+                           {contributor.repos && (
+                              <RepositoriesList
+                                 repos={contributor.repos}
+                                 name={contributor.login}
+                              />
+                           )}
+                        </div>
+                     </div>
                   </div>
-                  {contributor.repos && (
-                     <RepositoriesList
-                        repos={contributor.repos}
-                        name={contributor.login}
-                     />
-                  )}
                </div>
             </div>
          </div>
