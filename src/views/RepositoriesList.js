@@ -7,9 +7,9 @@ const RepositoriesList = (props) => {
       repos.length > 0 ? <>{mapThroughRepos}</> : <div>No repository</div>;
 
    const mapThroughRepos = repos.map((repo) => (
-      <div className='col-lg-6'>
+      <div className='col-lg-6' key={repo.id}>
          <Link to={`/contributor/${name}/${repo.name}`} className='button'>
-            <div className='project card' key={repo.id}>
+            <div className='project card'>
                <div className='project-header'>
                   <h3>{repo.name}</h3>
                </div>

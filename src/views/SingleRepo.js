@@ -30,7 +30,7 @@ const SingleRepo = (props) => {
       <>
          <div className='container-fluid '>
             <div className='angular-outline'>
-               <div className='bg-darkblue'>
+               <div className='bg-darkblue angular'>
                   <img src='/assets/Angular-1.png' alt='' />
                   <div className='empty blue-bg'></div>
                </div>
