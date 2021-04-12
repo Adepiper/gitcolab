@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { getContributor } from '../redux/actions/getContributor';
 import { loadingAction } from '../redux/actions/loading';
 import RepositoriesList from './RepositoriesList';
@@ -25,7 +25,7 @@ const Contributor = (props) => {
    }, []);
 
    const checkError = () =>
-      error && !loading ? <ErrorTemplate /> : <>{contributorEL()}</>;
+      error ? <ErrorTemplate /> : <>{contributorEL()}</>;
    const contributorEL = () => (
       <>
          <div className='container-fluid bg-black-angular'>

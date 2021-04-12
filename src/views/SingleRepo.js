@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getRepoDetails } from '../redux/actions/getRepoDetails';
 import { loadingAction } from '../redux/actions/loading';
 import ContributorsList from './ContributorsList';
+import ErrorTemplate from './utilities/ErrorTemplate';
 import Loading from './utilities/Loading';
 
 const SingleRepo = (props) => {
@@ -13,6 +14,7 @@ const SingleRepo = (props) => {
       getRepoDetails,
       loadingAction,
       match,
+      error,
    } = props;
 
    const { name, repo } = match.params;
@@ -22,6 +24,7 @@ const SingleRepo = (props) => {
          getRepoDetails(contributor.repos, repo, name);
       }
    }, []);
+   const checkError = () => (error ? <ErrorTemplate /> : <>{singleRepoEl()}</>);
 
    const singleRepoEl = () => (
       <>
@@ -85,13 +88,14 @@ const SingleRepo = (props) => {
       </>
    );
 
-   return <>{loading ? <Loading /> : singleRepoEl()}</>;
+   return <>{loading ? <Loading /> : checkError()}</>;
 };
 
 const mapStateToProps = (state) => ({
    contributor: state.contributors.contributor,
    loading: state.contributors.loading,
    repoDetails: state.contributors.repoDetails,
+   error: state.contributors.error,
 });
 
 export default connect(mapStateToProps, { getRepoDetails, loadingAction })(
