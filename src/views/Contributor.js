@@ -23,41 +23,41 @@ const Contributor = (props) => {
    }, []);
    const contributorEL = () => (
       <>
-         <div class='container-fluid bg-black-angular'>
-            <div class='image'>
+         <div className='container-fluid bg-black-angular'>
+            <div className='image'>
                <img src={contributor.avatar_url} alt='' />
             </div>
-            <div class='angular'>
+            <div className='angular'>
                <img src='/assets/Angular-1.png' alt='' />
             </div>
          </div>
-         <div class='container-fluid'>
-            <div class='content'>
+         <div className='container-fluid'>
+            <div className='content'>
                <div className='row'>
                   <div className='col-lg-3 col-md-5'>
-                     <div class='info'>
-                        <p class='name'>{contributor.name}</p>
-                        <span class='handle'>{contributor.login}</span>
-                        <div class='social'>
+                     <div className='info'>
+                        <p className='name'>{contributor.name}</p>
+                        <span className='handle'>{contributor.login}</span>
+                        <div className='social'>
                            {contributor.twitter_name && (
-                              <span class='icon'>
+                              <span className='icon'>
                                  <a href={``}>
-                                    <i class='fab fa-twitter'></i>
+                                    <i className='fab fa-twitter'></i>
                                  </a>
                               </span>
                            )}
                         </div>
-                        <p class='location'>
+                        <p className='location'>
                            <span>
-                              <i class='fas fa-map-marker-alt'></i>
+                              <i className='fas fa-map-marker-alt'></i>
                            </span>{' '}
                            {contributor.location}
                         </p>
                      </div>
                   </div>
                   <div className='col-lg-9 col-md-7'>
-                     <div class='recents'>
-                        <div class='heading'>
+                     <div className='recents'>
+                        <div className='heading'>
                            <h2>Repositories</h2>
                         </div>
                         <div className='row'>

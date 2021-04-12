@@ -17,78 +17,68 @@ const SingleRepo = (props) => {
 
    const { name, repo } = match.params;
    useEffect(() => {
-      loadingAction();
-      getRepoDetails(contributor.repos, repo, name);
+      if (repoDetails.name !== repo) {
+         loadingAction();
+         getRepoDetails(contributor.repos, repo, name);
+      }
    }, []);
 
    const singleRepoEl = () => (
       <>
-         <div class='container-fluid angular-outline'>
-            <div class='bg-darkblue'>
-               <img src='/assets/Angular-1.png' alt='' />
-               <div class='empty blue-bg'></div>
-            </div>
-         </div>
-         <div class='container-fluid alvo'>
-            <div class='alvo-info'>
-               <div class='alvo-logo'>
-                  <img src='/assets/Group.png' alt='' />
+         <div className='container-fluid '>
+            <div className='angular-outline'>
+               <div className='bg-darkblue'>
+                  <img src='/assets/Angular-1.png' alt='' />
+                  <div className='empty blue-bg'></div>
                </div>
-               <h3 class='repo-name'>Alvo Repository</h3>
-               <span class='date'>Apr 2021</span>
-               <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequuntur ab praesentium nesciunt aut molestiae quos ut
-                  temporibus numquam odio adipisci dolorum ipsam, placeat at
-                  dolorem soluta deleniti ullam ratione delectus?
-               </p>
             </div>
-            <div class='buttons'>
-               <a href='#' class='button'>
-                  Visit Site
-               </a>
-               <a href='#' class='button dark'>
-                  Pin to Profile
-               </a>
-            </div>
-         </div>
-         <div class='container-fluid'>
-            <hr />
-            <h3 class='header'>Contributors</h3>
-            <hr />
-            <div className='results'>
-               {repoDetails.contributors && (
-                  <ContributorsList contributors={repoDetails.contributors} />
-               )}
-            </div>
-         </div>
-         <div class='container-fluid getting-started'>
-            <hr />
-            <h3 class='header'>Getting Started with Alvo</h3>
-            <hr />
-            <div class='content'>
-               <h4>Starting a Project</h4>
-               <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem
-                  repellat corporis maiores natus, vel possimus saepe eos culpa,
-                  doloribus placeat vero! Aliquid facilis suscipit iste, illo
-                  eius, est a quae maxime voluptas hic dolore, saepe molestiae
-                  accusantium quidem ipsa. Voluptatum quis mollitia qui ipsam
-                  dolore, dolores iste molestias suscipit laborum, rem at soluta
-                  exercitationem alias, quod eum. Ratione, alias a! Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Quos quo repellat
-                  vel maiores autem voluptatibus expedita vero sapiente veniam
-                  molestias, voluptatum ducimus incidunt, porro minus alias. Cum
-                  libero voluptatum molestias. Lorem ipsum dolor sit amet
-                  consectetur, adipisicing elit. Non suscipit delectus officia
-                  dignissimos? Perferendis, incidunt. Eveniet, aut
-                  exercitationem soluta labore nisi quibusdam sapiente non iure
-                  veniam beatae, quo officia. Ut!
-               </p>
-               <div class='see-more'>
-                  <a href='#' class='button'>
-                     See more
+
+            <div className='alvo'>
+               <div className='alvo-info'>
+                  <h3 className='repo-name'>{repoDetails.name}</h3>
+                  <span class='date'>Created on: {repoDetails.created_at}</span>
+                  <span class='date'>
+                     Last Update: {repoDetails.updated_at}
+                  </span>
+                  <span>Git Url: {repoDetails.git_url}</span>
+                  <div className='project-social'>
+                     <div>
+                        <i className='fab fa-watchman-monitoring'></i>{' '}
+                        <span>{repoDetails.watchers}</span>
+                     </div>
+                     <div>
+                        <i className='fas fa-code-branch'></i>{' '}
+                        <span>{repoDetails.forks}</span>
+                     </div>
+                  </div>
+               </div>
+               <div className='buttons'>
+                  <a
+                     href={repoDetails.html_url}
+                     target='_blank'
+                     className='button'
+                  >
+                     View in Github
                   </a>
+               </div>
+            </div>
+            <div className='contributors-container'>
+               <hr />
+               <div className='container'>
+                  <h3 className='header'>Contributors</h3>
+               </div>
+
+               <hr />
+               <div className='container'>
+                  <div className='results'>
+                     <div className='row'>
+                        {repoDetails.contributors && (
+                           <ContributorsList
+                              contributors={repoDetails.contributors}
+                           />
+                        )}
+                     </div>
+                  </div>
                </div>
             </div>
          </div>

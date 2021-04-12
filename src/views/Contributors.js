@@ -74,10 +74,10 @@ const Contributors = (props) => {
                   </a>
                </div>
             </div>
-            <div class='results'>
+            <div className='results'>
                <ContributorsList contributors={contributors} />
 
-               <nav aria-label='Page navigation' class='navigation'>
+               <nav aria-label='Page navigation' className='navigation'>
                   <ul className='pagination'>
                      <li className='page-item'>
                         <a className='page-link' href='#'>
