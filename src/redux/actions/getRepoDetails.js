@@ -2,6 +2,7 @@ import { GET_REPO_DETAILS } from './types';
 import { options } from './options';
 import { contributorNotInArray } from './getContributor';
 import { concatenateArray } from './getContributors';
+import { errorAction } from './errorAction';
 
 export const getRepoDetails = (data, name, id) => async (dispatch) => {
    let repoDetails = {};
@@ -25,7 +26,7 @@ export const getRepoDetails = (data, name, id) => async (dispatch) => {
          payload: repoDetails,
       });
    } catch (err) {
-      console.log(err);
+      dispatch(errorAction());
    }
 };
 
@@ -40,6 +41,6 @@ const getRepoFromUser = async (id, name) => {
 
       return filteredArray;
    } catch (err) {
-      console.log(err);
+      errorAction();
    }
 };

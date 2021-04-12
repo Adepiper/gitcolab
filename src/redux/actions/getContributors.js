@@ -1,5 +1,6 @@
 import { GIT_CONTRIBUTORS } from './types';
 import { options } from './options';
+import { errorAction } from './errorAction';
 
 const getAllrepos = async (data) => {
    let contributorsArray = [];
@@ -9,7 +10,7 @@ const getAllrepos = async (data) => {
          const data = await res.json();
          contributorsArray = [...contributorsArray, ...data];
       } catch (err) {
-         console.log(err);
+         errorAction();
       }
    }
    return concatenateArray(contributorsArray);
@@ -36,7 +37,7 @@ export const getContributorDetails = async (url) => {
       const data = await res.json();
       return data;
    } catch (err) {
-      console.log(err);
+      errorAction();
    }
 };
 
@@ -53,6 +54,6 @@ export const getContributors = () => async (dispatch) => {
          payload: getAllContributorsData,
       });
    } catch (err) {
-      console.log(err);
+      dispatch(errorAction());
    }
 };

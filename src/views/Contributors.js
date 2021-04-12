@@ -12,6 +12,7 @@ import {
    FILTER_BY_GISTS,
    FILTER_BY_REPOS,
 } from '../redux/actions/types';
+import ErrorTemplate from './utilities/ErrorTemplate';
 
 const Contributors = (props) => {
    const {
@@ -20,9 +21,10 @@ const Contributors = (props) => {
       loading,
       loadingAction,
       sortingAction,
+      error,
    } = props;
    useEffect(() => {
-      if (contributors.length === 0) {
+      if (contributors.length === 0 || error) {
          loadingAction();
          getContributors();
       }
@@ -31,6 +33,9 @@ const Contributors = (props) => {
       loadingAction();
       sortingAction(params, contributors);
    };
+
+   const checkError = () =>
+      error ? <ErrorTemplate /> : <>{contributorsEL()}</>;
 
    const contributorsEL = () => (
       <div className='container-fluid search'>
@@ -110,7 +115,7 @@ const Contributors = (props) => {
          </div>
       </div>
    );
-   return <>{loading ? <Loading /> : contributorsEL()}</>;
+   return <>{loading ? <Loading /> : checkError()}</>;
 };
 
 Contributors.propTypes = {
@@ -121,6 +126,7 @@ Contributors.propTypes = {
 const mapStateToProps = (state) => ({
    contributors: state.contributors.contributors,
    loading: state.contributors.loading,
+   error: state.contributors.error,
 });
 
 export default connect(mapStateToProps, {

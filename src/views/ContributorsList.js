@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 const ContributorsList = (props) => {
    const { contributors } = props;
    const contributorInfo = (contributor) => (
-      <div className='col-md-5 col-lg-3'>
-         <div className='box' key={contributor.id}>
+      <div className='col-md-5 col-lg-3' key={contributor.id}>
+         <div className='box'>
             <div className='image'>
                <img
                   src={contributor.avatar_url}

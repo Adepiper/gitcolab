@@ -4,6 +4,7 @@ import { connect, useSelector } from 'react-redux';
 import { getContributor } from '../redux/actions/getContributor';
 import { loadingAction } from '../redux/actions/loading';
 import RepositoriesList from './RepositoriesList';
+import ErrorTemplate from './utilities/ErrorTemplate';
 import Loading from './utilities/Loading';
 
 const Contributor = (props) => {
@@ -14,6 +15,7 @@ const Contributor = (props) => {
       contributor,
       loading,
       loadingAction,
+      error,
    } = props;
    const { name } = match.params;
 
@@ -21,6 +23,9 @@ const Contributor = (props) => {
       loadingAction();
       getContributor(contributors, name);
    }, []);
+
+   const checkError = () =>
+      error && !loading ? <ErrorTemplate /> : <>{contributorEL()}</>;
    const contributorEL = () => (
       <>
          <div className='container-fluid bg-black-angular'>
@@ -75,13 +80,14 @@ const Contributor = (props) => {
          </div>
       </>
    );
-   return <>{loading ? <Loading /> : contributorEL()}</>;
+   return <>{loading ? <Loading /> : checkError()}</>;
 };
 
 const mapStateToProps = (state) => ({
    contributors: state.contributors.contributors,
    contributor: state.contributors.contributor,
    loading: state.contributors.loading,
+   error: state.contributors.error,
 });
 
 export default connect(mapStateToProps, { getContributor, loadingAction })(

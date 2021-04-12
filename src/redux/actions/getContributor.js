@@ -1,5 +1,6 @@
 import { GIT_CONTRIBUTOR } from './types';
 import { options } from './options';
+import { errorAction } from './errorAction';
 
 export const getContributor = (data, id) => async (dispatch) => {
    let contributor = {};
@@ -20,11 +21,11 @@ export const getContributor = (data, id) => async (dispatch) => {
          payload: contributor,
       });
    } catch (err) {
-      console.log(err);
+      dispatch(errorAction());
    }
 };
 
-export const contributorNotInArray = async (id) => {
+export const contributorNotInArray = (id) => async (dispatch) => {
    let data = {};
    try {
       const res = await fetch(`https://api.github.com/users/${id}`);
@@ -33,6 +34,6 @@ export const contributorNotInArray = async (id) => {
       data = { ...responseData };
       return data;
    } catch (err) {
-      console.log(err);
+      dispatch(errorAction());
    }
 };

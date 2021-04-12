@@ -1,5 +1,6 @@
 import { GET_CONTRIBUTOR_REPO } from './types';
 import { options } from './options';
+import { errorAction } from './errorAction';
 
 export const getContributorRepo = (url) => async (dispatch) => {
    try {
@@ -11,6 +12,6 @@ export const getContributorRepo = (url) => async (dispatch) => {
          payload: data,
       });
    } catch (err) {
-      console.log(err);
+      dispatch(errorAction());
    }
 };
