@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { getContributors } from '../redux/actions/getContributors';
 import PropTypes from 'prop-types';
 import ContributorsList from './ContributorsList';
@@ -13,6 +12,11 @@ import {
    FILTER_BY_REPOS,
 } from '../redux/actions/types';
 import ErrorTemplate from './utilities/ErrorTemplate';
+import Pagination from './utilities/Pagination';
+import {
+   setPaginatedData,
+   setTotalCount,
+} from '../redux/actions/paginationAction';
 
 const Contributors = (props) => {
    const {
@@ -25,13 +29,17 @@ const Contributors = (props) => {
    } = props;
    useEffect(() => {
       if (contributors.length === 0 || error) {
-         loadingAction();
-         getContributors();
+         loadDataFromServer();
       }
    }, []);
    const sortBy = (params) => {
       loadingAction();
       sortingAction(params, contributors);
+   };
+
+   const loadDataFromServer = async () => {
+      loadingAction();
+      await getContributors();
    };
 
    const checkError = () =>
@@ -82,35 +90,7 @@ const Contributors = (props) => {
             <div className='results'>
                <ContributorsList contributors={contributors} />
 
-               <nav aria-label='Page navigation' className='navigation'>
-                  <ul className='pagination'>
-                     <li className='page-item'>
-                        <a className='page-link' href='#'>
-                           1
-                        </a>
-                     </li>
-                     <li className='page-item'>
-                        <a className='page-link' href='#'>
-                           2
-                        </a>
-                     </li>
-                     <li className='page-item'>
-                        <a className='page-link' href='#'>
-                           3
-                        </a>
-                     </li>
-                     <li className='page-item'>
-                        <a className='page-link' href='#'>
-                           4
-                        </a>
-                     </li>
-                     <li className='page-item'>
-                        <a className='page-link' href='#'>
-                           5
-                        </a>
-                     </li>
-                  </ul>
-               </nav>
+               {/* <Pagination /> */}
             </div>
          </div>
       </div>

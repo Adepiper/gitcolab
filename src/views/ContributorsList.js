@@ -16,14 +16,15 @@ const ContributorsList = (props) => {
             <p className='name'>{contributor.name}</p>
             <div className='social'>
                <span className='red'>
-                  <i class='fas fa-user-plus'></i>&nbsp;{contributor.followers}
+                  <i className='fas fa-user-plus'></i>&nbsp;
+                  {contributor.followers}
                </span>
                <span className='blue'>
-                  <i class='fas fa-file-code'></i>&nbsp;
+                  <i className='fas fa-file-code'></i>&nbsp;
                   {contributor.public_repos}
                </span>
                <span className='green'>
-                  <i class='fas fa-comment-dots'></i>&nbsp;
+                  <i className='fas fa-comment-dots'></i>&nbsp;
                   {contributor.public_gists}
                </span>
             </div>

@@ -1,5 +1,10 @@
 import './App.css';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import {
+   Route,
+   BrowserRouter as Router,
+   Switch,
+   Redirect,
+} from 'react-router-dom';
 import Contributors from './views/Contributors';
 import SingleRepo from './views/SingleRepo';
 import Contributor from './views/Contributor';
@@ -17,6 +22,7 @@ function App() {
                path='/contributor/:name/:repo'
                component={SingleRepo}
             />
+            <Route render={() => <Redirect to='/' />} />
          </Switch>
       </Router>
    );

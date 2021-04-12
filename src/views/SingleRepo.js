@@ -39,8 +39,10 @@ const SingleRepo = (props) => {
             <div className='alvo'>
                <div className='alvo-info'>
                   <h3 className='repo-name'>{repoDetails.name}</h3>
-                  <span class='date'>Created on: {repoDetails.created_at}</span>
-                  <span class='date'>
+                  <span className='date'>
+                     Created on: {repoDetails.created_at}
+                  </span>
+                  <span className='date'>
                      Last Update: {repoDetails.updated_at}
                   </span>
                   <span>Git Url: {repoDetails.git_url}</span>
