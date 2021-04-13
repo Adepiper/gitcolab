@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
    return (
       <>
          <nav className='navbar navbar-expand-lg navbar-light bg-light sticky-top'>
             <div className='container-fluid'>
-               <Link className='navbar-brand' to='/'>
+               <NavLink className='navbar-brand' to='/'>
                   Angular
-               </Link>
+               </NavLink>
                <button
                   className='navbar-toggler'
                   type='button'

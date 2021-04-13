@@ -1,7 +1,6 @@
 import { GIT_CONTRIBUTORS } from './types';
 import { options } from './options';
 import { errorAction } from './errorAction';
-import { setPaginatedData, setTotalCount } from './paginationAction';
 
 const getAllrepos = async (data) => {
    let contributorsArray = [];

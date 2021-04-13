@@ -1,4 +1,3 @@
-import { act } from 'react-dom/test-utils';
 import {
    CURRENT_PAGE,
    PER_PAGE,
