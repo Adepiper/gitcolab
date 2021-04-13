@@ -12,11 +12,6 @@ import {
    FILTER_BY_REPOS,
 } from '../redux/actions/types';
 import ErrorTemplate from './utilities/ErrorTemplate';
-import Pagination from './utilities/Pagination';
-import {
-   setPaginatedData,
-   setTotalCount,
-} from '../redux/actions/paginationAction';
 
 const Contributors = (props) => {
    const {
